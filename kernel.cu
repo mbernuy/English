@@ -346,7 +346,6 @@ cudaError_t keyGen(BYTE* key1, BYTE* key2, BYTE* key3, BYTE round_key1[][48], BY
 		goto Error;
 	}
 
-#ifdef PRINT
 	//Print the keys
 	printf("KEY SET 1:\n");
 	for (int i = 0; i < 16; i++) {
@@ -366,7 +365,6 @@ cudaError_t keyGen(BYTE* key1, BYTE* key2, BYTE* key3, BYTE round_key1[][48], BY
 		bin48_to_hex(round_key3[i]);
 		printf("\n");
 	}
-#endif
 
 Error:
     cudaFree(dev_key3);
