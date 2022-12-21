@@ -832,7 +832,6 @@ int main()
 	}
 
 	//Print the results
-#ifdef PRINT
 	printf("\nPlaint text in ASCII:\n");
 	bin64_to_hex(plain_text, (int)size);
 	printf("\n\nEncyrpted text step 1:\n");
@@ -848,7 +847,6 @@ int main()
 	printf("\n\nFinal decyrpted text step 3:\n");
 	bin64_to_hex(deciphered1_text, (int)size);
 	printf("\n\n");
-#endif //PRINT
 
 	//Output the plaintext hex values and encyrpted hex values to plain_hex.txt & encyrpted_hex.txt 
 	write_text(plain_text, (int)size, "plain_hex.txt");
