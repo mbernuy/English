@@ -725,6 +725,7 @@ void write_text(BYTE* input, int size, const char *str ) {
 int main()
 {
 	//Variables
+	struct timeval ini, fin;
 	float size = 0.f;//holds plaintext block size which consists of 64bits
 	BYTE* plain_text = nullptr;//plaintext
 	//For encryption
@@ -749,8 +750,6 @@ int main()
 	BYTE key1[64];//base key
 	BYTE key2[64];//base key
 	BYTE key3[64];//base key
-	
-	struct timeval ini, fin;
 
 	//Read the txt file to related pointers
 	readText(size_arr, size, key1_int, key2_int, key3_int, pt_int);
