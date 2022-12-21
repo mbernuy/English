@@ -748,6 +748,8 @@ int main()
 	BYTE key1[64];//base key
 	BYTE key2[64];//base key
 	BYTE key3[64];//base key
+	
+	struct timeval ini, fin;
 
 	//Read the txt file to related pointers
 	readText(size_arr, size, key1_int, key2_int, key3_int, pt_int);
@@ -776,6 +778,7 @@ int main()
 			return 1;
 		}
 	}
+	gettimeofday(&ini, NULL);
 	//3DES Encryption
 	for (int i = 0; i < ITER_COUNT; i++) {
 		cudaStatus = encrypt(plain_text, round_keys1, cipher1_text, (int)size);
@@ -817,6 +820,9 @@ int main()
 			return 1;
 		}
 	}
+	gettimeofday(&fin, NULL);
+	printf("Tiempo GPU: %f\n", ((fin.tv_sec*1000000+fin.tv_usec)-(ini.tv_sec*1000000+ini.tv_usec))*1.0/1000000.0);
+	
 	// cudaDeviceReset must be called before exiting in order for profiling and
 	// tracing tools such as Nsight and Visual Profiler to show complete traces.
 	cudaStatus = cudaDeviceReset();
